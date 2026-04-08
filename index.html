@@ -87,7 +87,7 @@ h1 {
 }
 
 /* Ajuste Mobile */
-@media (max-width: 768px) {
+@media (max-width: 430px) {
     h1 { font-size: 2.5rem !important; }
 }
 
@@ -125,7 +125,7 @@ html, body {
    MOBILE ONLY — max-width: 768px
    Desktop não é afetado por nenhuma linha aqui
    ============================================= */
-@media (max-width: 768px) {
+@media (max-width: 430px) {
 
     /* Corrige bug iOS com background-attachment fixed */
     .hero-bg-ai { background-attachment: scroll !important; }
@@ -166,18 +166,10 @@ html, body {
     .grid { gap: 1rem !important; }
 
     /* Seção soluções compacta */
-    #solucoes {
-        padding: 1.25rem !important;
-        border-radius: 28px !important;
-        margin-left: 0.75rem !important;
-        margin-right: 0.75rem !important;
-    }
-
-    /* Cards internos compactos */
-    #solucoes .bg-white {
-        padding: 1.25rem !important;
-        border-radius: 20px !important;
-    }
+   /* Seção soluções — oculta no mobile */
+#solucoes {
+    display: none !important;
+}
 
     /* Formulário compacto no mobile */
     #diagnostico > div {
@@ -242,6 +234,8 @@ nav {
     background-position: center !important;
     background-attachment: fixed !important;
 }
+
+
 
 /* Seção soluções — CONFIGURAÇÃO FINAL */
 #solucoes {
@@ -390,7 +384,7 @@ quebra objeções e leva o cliente até o agendamento</span>
 </header>
 
 
-<section id="solucoes" class="container mx-auto px-6 py-12 bg-white/40 rounded-[60px] border border-blue-50/50 my-6">
+<section id="solucoes" class="hidden md:block container mx-auto px-6 py-12 bg-white/40 rounded-[60px] border border-blue-50/50 my-6">
     <div class="text-center mb-12 max-w-3xl mx-auto">
         <div class="inline-block bg-brand/10 text-brand text-[13px] font-bold uppercase tracking-[.2em] px-4 py-1.5 rounded-full mb-4">
             Por que empresas estão migrando para IA?
