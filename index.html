@@ -2,6 +2,14 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+
+    <meta http-equiv="Content-Security-Policy" content="
+script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com;
+connect-src https://www.google-analytics.com https://region1.google-analytics.com;
+img-src 'self' https://www.google-analytics.com data:;
+style-src 'self' 'unsafe-inline';
+frame-src https://www.googletagmanager.com;
+">
     <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
