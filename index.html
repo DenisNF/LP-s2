@@ -902,7 +902,7 @@ body.hero-bg-ai::before {
             });
         });
 
-        // Sticky CTA — esconde no hero e no formulário
+        // Sticky CTA — esconde no hero e no formulário (só mobile)
 window.addEventListener('load', function() {
     const stickyCta = document.getElementById('sticky-cta-bar');
     const diagnostico = document.getElementById('diagnostico');
@@ -910,6 +910,12 @@ window.addEventListener('load', function() {
     if (!stickyCta || !diagnostico) return;
 
     function updateStickyCta() {
+        // Só roda em mobile
+        if (window.innerWidth > 768) {
+            stickyCta.style.display = 'none';
+            return;
+        }
+
         const scrollY = window.scrollY;
         const formTop = diagnostico.offsetTop;
         const windowH = window.innerHeight;
@@ -922,6 +928,7 @@ window.addEventListener('load', function() {
     }
 
     window.addEventListener('scroll', updateStickyCta);
+    window.addEventListener('resize', updateStickyCta);
     updateStickyCta();
 });
     </script>
