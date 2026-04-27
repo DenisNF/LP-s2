@@ -891,21 +891,24 @@ Seu concorrente não.
                 source:       "Landing Page"
             };
 
-            fetch('https://atm.ideal.ia.br/webhook/crmdenis', {
-                method:  'POST',
-                mode:    'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body:    JSON.stringify(data)
-            })
-            .then(() => {
-                window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({ 'event': 'form_submission_success' });
-                setTimeout(() => { window.location.href = "obrigado.html"; }, 1500);
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-                window.location.href = "obrigado.html";
-            });
+           // Dispara o evento de conversão IMEDIATAMENTE (não depende do webhook)
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({ 'event': 'form_submission_success' });
+
+// Envia o lead pro webhook em paralelo
+fetch('https://atm.ideal.ia.br/webhook/crmdenis', {
+    method:  'POST',
+    mode:    'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body:    JSON.stringify(data)
+})
+.catch(error => {
+    console.error('Erro no webhook:', error);
+})
+.finally(() => {
+    // Aguarda 2500ms para garantir que as tags GTM/Ads disparem antes do redirect
+    setTimeout(() => { window.location.href = "obrigado.html"; }, 2500);
+});
         });
 
         // Scroll Badge — aparece após 200px
